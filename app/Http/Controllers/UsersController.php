@@ -19,6 +19,7 @@ class UsersController extends Controller
             'users' => $users,
         ]);
     }
+    
     public function show($id)
     {
         // idの値でユーザを検索して取得
