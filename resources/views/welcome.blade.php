@@ -20,6 +20,8 @@
             
             <div class="col-sm-8">
                 
+                @include('microposts.form')
+                
                 @include('microposts.microposts')
                 
             </div>
