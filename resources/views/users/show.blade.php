@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="row">
+        
         <aside class="col-sm-4">
             <div class="card">
                 <div class="card-header">
@@ -12,7 +13,11 @@
                     <img class="rounded img-fluid" src="{{ Gravatar::get($user->email, ['size' => 500]) }}" alt="">
                 </div>
             </div>
+            
+            @include('user_follow.follow_button')
+            
         </aside>
+        
         <div class="col-sm-8">
             <ul class="nav nav-tabs nav-justified mb-3">
                 
@@ -38,6 +43,7 @@
             @include('microposts.microposts')
             
         </div>
+        
     </div>
 @endsection
 
