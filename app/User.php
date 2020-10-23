@@ -55,7 +55,7 @@ class User extends Authenticatable
     }
 
     /**
-     * このユーザをフォロー中のユーザ。（ Userモデルとの関係を定義）
+     * このユーザをフォロー中のユーザ。（ Userモデルとの関係を定義）第二引数にテーブル名
      */
     public function followers()
     {
@@ -127,7 +127,7 @@ class User extends Authenticatable
      */
      public function loadRelationshipCounts()
      {
-         $this->loadCount(['microposts', 'followings', 'followers']);
+         $this->loadCount(['microposts', 'followings', 'followers', 'favorites']);
      }
     
     /**
@@ -139,9 +139,12 @@ class User extends Authenticatable
          
          $userIds[] = $this->id;
          
-         return Microposts::whereIn('user_id', $userIds);
+         return Micropost::whereIn('user_id', $userIds);
      }
      
-     
+     public function favorites()
+     {
+         return $this->belongsToMany(Micropost::class, 'favorites', 'user_id', 'micropost_id');
+     }
 }
 
